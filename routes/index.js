@@ -43,7 +43,7 @@ var getFileName = function (name) {
 };
 //获取文件夹路径
 var getFolderPath = function (filePath) {
-    return path.normalize(filePath.substring(0, filePath.lastIndexOf('\\')));
+    return path.dirname(path.normalize(filePath));
 };
 //获取文件路径
 var getFilePath = function (filename) {
