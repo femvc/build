@@ -47,7 +47,7 @@ var getFolderPath = function (filePath) {
 };
 //获取文件路径
 var getFilePath = function (filename) {
-    return path.normalize(__dirname.replace('routes', '') + filename);
+    return path.normalize(process.cwd().replace('routes', '') + filename); // __dirname
 };
 //按照url获取文件内容
 var getFile = function (url, callback) {
