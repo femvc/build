@@ -123,7 +123,7 @@ var writeContent = function (req, res, type) {
                 })
             }
             else {
-                var filename = getFileName(req.query.file);
+                var filename = getFileName(req.query.file) + '.' + type;
                 var filepath = getFilePath(filename);
                 fs.exists(filepath, function (exists) {
                     if (!exists) {
