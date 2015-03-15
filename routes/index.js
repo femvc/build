@@ -47,7 +47,7 @@ var getFolderPath = function (filePath) {
 };
 //获取文件路径
 var getFilePath = function (filename) {
-    return path.normalize(process.cwd().replace('routes', '') + filename); // __dirname
+    return path.normalize(__dirname.replace('routes', '') + filename); // __dirname || process.cwd()
 };
 //按照url获取文件内容
 var getFile = function (url, callback) {
@@ -73,15 +73,16 @@ var getFile = function (url, callback) {
         });
     }
     else {
-        resultdata = fs.readFile(url[0], function (err, data) {
+        var src = path.normalize(__dirname + '/' + url[0]);
+        resultdata = fs.readFile(src, function (err, data) {
             console.log(err);
             if (!err) {
                 console.log(data);
                 resultdata = iconv.encode(data, 'UTF8');
-                callback('/*path --' + url[0] + '*/\r\n' + resultdata, true);
+                callback('/*path --' + src + '*/\r\n' + resultdata, true);
             }
             else {
-                callback('/*Read Error(file) --' + url[0] + '*/\r\n', false);
+                callback('/*Read Error(file) --' + src + '*/\r\n', false);
             }
         });
 
