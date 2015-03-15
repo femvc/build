@@ -68,7 +68,7 @@ var getFile = function (url, callback) {
                 });
             }
             else {
-                callback('/*Read Error --' + url[0] + '*/\r\n', false);
+                callback('/*Read Error(http) --' + url[0] + '*/\r\n', false);
             }
         });
     }
@@ -81,7 +81,7 @@ var getFile = function (url, callback) {
                 callback('/*path --' + url[0] + '*/\r\n' + resultdata, true);
             }
             else {
-                callback('/*Read Error --' + url[0] + '*/\r\n', false);
+                callback('/*Read Error(file) --' + url[0] + '*/\r\n', false);
             }
         });
 
