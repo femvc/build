@@ -100,7 +100,7 @@ var mergeFile = function (query, type, callback) {
             num++;
             files = files.concat([text]);
             if (num == fsArray.length) {
-                callback(String(query.debug) !== 'undefined' ? files.join('') :
+                callback(String(query.debug) !== 'undefined' ? files.join('\n') :
                     (type == 'js' ? minify(files.join('')).code :
                         minicss(files.join(''))));
             }
@@ -109,7 +109,7 @@ var mergeFile = function (query, type, callback) {
 };
 //输出内容
 var writeContent = function (req, res, type) {
-    // res.setHeader('Content-Type', 'text/' + (type == 'js' ? 'plain' : 'css'));
+    res.setHeader('Content-Type',  (type === 'js' ? 'application/javascript' : type === 'css' ? 'text/css' : 'text/plain'));
     if (!req.query || !req.query.file) {
         res.send('abort');
         return;
