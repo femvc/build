@@ -73,7 +73,7 @@ var getFile = function (url, callback) {
         });
     }
     else {
-        var src = path.normalize(__dirname + '/' + url[0]);
+        var src = getFilePath(url[0]);
         resultdata = fs.readFile(src, function (err, data) {
             console.log(err);
             if (!err) {
